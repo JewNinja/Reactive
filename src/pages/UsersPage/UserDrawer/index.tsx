@@ -24,7 +24,8 @@ const UserDrawer = () => {
     } else {
       dispatch(createUser(values))
     }
-
+    
+    form.resetFields()
     dispatch(closeUserDrawer())
   };
 

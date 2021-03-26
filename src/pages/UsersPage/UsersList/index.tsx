@@ -12,7 +12,7 @@ import './style.css'
 const UsersList = () => {
   const dispatch = useDispatch()
   const users = useSelector((state: StateType) => state.users)
-  debugger
+  
   return (
     <div>
       <Button
@@ -31,10 +31,12 @@ const UsersList = () => {
           title="Имя"
           dataIndex="name"
           key="name"
-          render={text => (users.isLoading ? (
+          render={(text, record: IUser) => (users.isLoading ? (
             <Skeleton title={false} paragraph={{ rows: 1 }} active />
           ) : (
-            <div>{text}</div>
+            <Button type="link" href={`/users/${record.id}`}>
+              {text}
+            </Button>
           ))}
         />
         <Table.Column
